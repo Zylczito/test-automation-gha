@@ -8,7 +8,7 @@ on:
 jobs:
     format:
         name: Check format
-        runs-on: ubuntu-latest
+        runs-on: windows-11
         steps:
         - uses: actions/checkout@v3
         - uses: psf/black@22.3.0
@@ -20,7 +20,7 @@ jobs:
     lint:
         name: Run linter
         needs: [format]
-        runs-on: ubuntu-latest
+        runs-on: windows-11
         container:
             image: alpine/flake8:3.8.4
             options: --cpus="1"
