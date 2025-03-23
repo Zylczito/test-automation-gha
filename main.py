@@ -9,6 +9,6 @@ def main():
     for i, factorial in enumerate(factorials(100)):
         print(f"{i + 1}! = {factorial}")
 
-#asd
+
 if __name__ == "__main__":
     main()
