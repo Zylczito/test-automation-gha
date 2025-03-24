@@ -10,3 +10,8 @@ def test_factorial_zero():
 def test_factorial_positive():
     result = list(factorials(5))
     assert result == [1, 2, 6, 24, 120]
+
+
+def test_factorial_negative():
+    result = list(factorials(-1))
+    assert result == []

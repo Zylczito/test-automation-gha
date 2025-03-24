@@ -1,7 +1,6 @@
 def factorials(n):
-    if n < 0 or n != int(n):
-        raise ValueError
-
+    if n < 0:
+        return None
 
     factorial = 1
     if n == 0:
