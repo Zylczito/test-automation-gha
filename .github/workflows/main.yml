@@ -4,6 +4,7 @@ on:
     branches:
       - action
 
+
 jobs:
   format:
     name: Check format
