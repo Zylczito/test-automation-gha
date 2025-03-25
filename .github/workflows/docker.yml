@@ -1,4 +1,5 @@
 name: Docker CI
+
 on:
   push:
     branches:
@@ -14,6 +15,11 @@ jobs:
 
     - name: Set up Docker
       uses: docker/setup-buildx-action@v1
+
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
 
     - name: Build and push Docker image
       run: docker-compose up --build
