@@ -1,5 +1,4 @@
 name: Docker CI
-
 on:
   push:
     branches:
@@ -26,3 +25,4 @@ jobs:
       run: docker-compose run linter
 
     - name: Run tests
+      run: docker-compose run test
