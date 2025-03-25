@@ -15,3 +15,8 @@ def test_factorial_positive():
 def test_factorial_negative():
     result = list(factorials(-1))
     assert result == []
+
+
+def test_factorial_fraction():
+    with pytest.raises(TypeError):
+        list(factorials(5.5))
