@@ -31,4 +31,4 @@ jobs:
       run: docker-compose run linter
 
     - name: Run tests
-      run: docker-compose run test
+      run: docker-compose run tests
