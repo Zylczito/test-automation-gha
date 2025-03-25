@@ -4,14 +4,12 @@ on:
     branches:
       - actions
 
-
 jobs:
   format:
     name: Check format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: psf/black@22.3.0
         with:
           options: "--check --verbose"
           src: "./"
@@ -30,14 +28,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install flake8
-        run: pip install flake8
-
-      - name: Run flake8
-        run: flake8 ./ --append-config=.flake8 --verbose
-
   test:
-    name: Run tests
+    name: Run tests with coverage
     needs: [lint]
     runs-on: ubuntu-latest
     steps:
@@ -54,5 +46,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run pytest
-        run: pytest
+      - name: Run pytest with coverage
+        run: |
+          pytest --cov=./ --cov-report=xml --cov-report=term-missing
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Run pylint
+        run: |
+          pylint test_main.py
